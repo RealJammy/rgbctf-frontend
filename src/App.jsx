@@ -11,6 +11,10 @@ function App() {
     // do anything with the loaded agent
     agent.show();
 });
+clippy.load('Bonzi', function(agent){
+  // do anything with the loaded agent
+  agent.show();
+});
   return (
     
     <ThemeProvider>   <Navbar/>
