@@ -18,16 +18,11 @@ class App extends React.Component {
       challengeModals: []
     };
     this.handleOpen = this.handleOpen.bind(this)
+    
+    
   }
 
-  handleOpen(challenge) {
-    this.setState({
-      challenges: this.state.challenges,
-      challengeModals: this.state.challengeModals.concat(<ChallengeModal name={challenge.name} category={challenge.category}></ChallengeModal>)
-    })
-  }
-
-  render() {
+  componentDidMount() {
     clippy.load("Clippy", function (agent) {
       // do anything with the loaded agent
       agent.show();
@@ -36,6 +31,16 @@ class App extends React.Component {
       // do anything with the loaded agent
       agent.show();
     });
+  }
+  handleOpen(challenge) {
+    this.setState({
+      challenges: this.state.challenges,
+      challengeModals: this.state.challengeModals.concat(<ChallengeModal name={challenge.name} category={challenge.category}></ChallengeModal>)
+    })
+  }
+
+  render() {
+
 
     return (
       <ThemeProvider>

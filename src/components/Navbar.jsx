@@ -33,25 +33,36 @@ class NavBar extends React.Component {
                       .filter((chall) => chall.category === "OSINT")
                       .map((chall) => (
                         <List.Item key={chall.name} onClick={() => this.props.handleOpen(chall)}>
-                          abc
+                          {chall.name}
                         </List.Item>
                       ))}
 
-                    <List.Item icon="shell32_135">test2</List.Item>
                   </List>
                   OSINT
                 </List.Item>
                 <List.Item icon="shdocvw_259">
                   <List>
-                    <List.Item icon="shell32_135">test3</List.Item>
-                    <List.Item icon="shell32_135">test4</List.Item>
+                  {this.props.challenges
+                      .filter((chall) => chall.category === "Crypto")
+                      .map((chall) => (
+                        <List.Item key={chall.name} onClick={() => this.props.handleOpen(chall)}>
+                          {chall.name}
+                        </List.Item>
+                      ))}
+
                   </List>
                   Crypto
                 </List.Item>
                 <List.Item icon="shdocvw_257">
                   <List>
-                    <List.Item>test5</List.Item>
-                    <List.Item>test6</List.Item>
+                  {this.props.challenges
+                      .filter((chall) => chall.category === "Web")
+                      .map((chall) => (
+                        <List.Item key={chall.name} onClick={() => this.props.handleOpen(chall)}>
+                          {chall.name}
+                        </List.Item>
+                      ))}
+
                   </List>
                   Web
                 </List.Item>
@@ -61,7 +72,7 @@ class NavBar extends React.Component {
                 <List.Item icon="settings">
                   <List>
                     <List.Item icon="folder_settings">
-                      Account Profile
+                      Account Profiles
                     </List.Item>
                     <List.Item icon="folder_print">Team Settings</List.Item>
                   </List>
