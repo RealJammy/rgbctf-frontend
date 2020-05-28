@@ -1,12 +1,7 @@
-import React, { useState } from "react";
-import TaskBar from "@react95/core/TaskBar";
-import { Modal } from "@react95/core/Modal";
 import List from "@react95/core/List";
-import ChallengeModal from "./ChallengeModal";
+import TaskBar from "@react95/core/TaskBar";
+import React, { useContext } from "react";
 
-import ReactDom from "react-dom";
-
-import context from "../lib/context";
 
 
 class NavBar extends React.Component {
@@ -23,7 +18,7 @@ class NavBar extends React.Component {
   render() {
     return (
       <>
-        <TaskBar
+       <TaskBar
           list={
             <>
               <List>

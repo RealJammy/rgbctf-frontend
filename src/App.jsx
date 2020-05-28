@@ -13,6 +13,12 @@ class App extends React.Component {
         {
           name: "abc",
           category: "OSINT",
+          description: "abc",
+        },
+        {
+          name: "def",
+          category: "Crypto",
+          description: "def",
         },
       ],
       challengeModals: []
@@ -35,7 +41,7 @@ class App extends React.Component {
   handleOpen(challenge) {
     this.setState({
       challenges: this.state.challenges,
-      challengeModals: this.state.challengeModals.concat(<ChallengeModal name={challenge.name} category={challenge.category}></ChallengeModal>)
+      challengeModals: this.state.challengeModals.concat(<ChallengeModal description={challenge.description} name={challenge.name} category={challenge.category}></ChallengeModal>)
     })
   }
 
