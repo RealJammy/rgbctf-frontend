@@ -70,7 +70,7 @@ class LoginPage extends React.Component {
           <DialogIcon name="mprserv_120" size="60"/>
           <div style={{ 'flex-grow': '1', 'display': 'flex', 'flex-direction': 'column' }} >
             <Label>Type a username and password to log on to rgbCTF</Label>
-            <div><InputLabel>LUsername</InputLabel><RightSideInput style={{  }}></RightSideInput></div>
+            <div><InputLabel>Username</InputLabel><RightSideInput style={{  }}></RightSideInput></div>
             <div><InputLabel>Password</InputLabel><RightSideInput style={{  }}></RightSideInput></div>
           </div>
           <div style={{ 'display': 'inline-block', 'margin-left': '12px' }}>
