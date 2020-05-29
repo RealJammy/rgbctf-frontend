@@ -4,6 +4,9 @@ import clippy from "clippyjs";
 import Navbar from "./components/Navbar";
 import { ThemeProvider } from "@react95/core";
 import ChallengeModal from "./components/ChallengeModal";
+import LoginPage from "./components/LoginPage";
+
+import GlobalStyles from '@react95/core/GlobalStyle'
 
 class App extends React.Component {
   constructor(props) {
@@ -50,6 +53,8 @@ class App extends React.Component {
 
     return (
       <ThemeProvider>
+        <GlobalStyles></GlobalStyles>
+        <LoginPage></LoginPage>
         {this.state.challengeModals.map((chall) => {
           console.log(chall);
           return chall;
