@@ -3,6 +3,7 @@ import { Modal } from "./Modal";
 import styled from "styled-components";
 import { th } from "@xstyled/system";
 import Icon from "@react95/core/Icon/Icon";
+import Input from "@react95/core/Input/Input"
 
 const Button = styled.button`
   height: 25px;
@@ -35,17 +36,24 @@ const Button = styled.button`
 
 const Label = styled.p`
 font-size:12px;
-margin-left:100px;
-margin-right:auto;
 margin-top:10px;
+display: inline-block;
 `;
 
-const StyledIcon = styled(Icon)`
+const DialogIcon = styled(Icon)`
 margin-left: 20px;
+margin-right: 20px;
 margin-top: 10px;
-margin-right: auto;
-margin-bottom: auto;
-position:absolute;
+display: inline-block;
+`
+
+const RightSideInput = styled(Input)`
+width: 70%;
+box-sizing: border-box;
+display: inline-block;
+`
+const InputLabel = styled(Label)`
+width: 30%;
 `
 
 class LoginPage extends React.Component {
@@ -58,24 +66,22 @@ class LoginPage extends React.Component {
         title="Enter rgbCTF Password"
         icon="computer"
       >
-          <div
-          style={{ display: "flex", flexDirection: "column", flexGrow: "1" }}
-        > <StyledIcon name="mprserv_120" size="60"/></div>
-         
-          <Label>Type a username and password to log on to rgbCTF</Label>
-        <div
-          style={{ display: "flex", flexDirection: "column", flexGrow: "1" }}
-        >
-          <Button value="OK" onClick={this.handleLogin}>
-            OK
-          </Button>
-          <Button value="Cancel" onClick={this.handleLogin}>
-            Cancel
-          </Button>
+        <div style={{ 'display': 'flex', 'flex-direction': 'row' }} >
+          <DialogIcon name="mprserv_120" size="60"/>
+          <div style={{ 'flex-grow': '1', 'display': 'flex', 'flex-direction': 'column' }} >
+            <Label>Type a username and password to log on to rgbCTF</Label>
+            <div><InputLabel>LUsername</InputLabel><RightSideInput style={{  }}></RightSideInput></div>
+            <div><InputLabel>Password</InputLabel><RightSideInput style={{  }}></RightSideInput></div>
+          </div>
+          <div style={{ 'display': 'inline-block', 'margin-left': '12px' }}>
+            <Button value="OK" onClick={this.handleLogin}>
+              OK
+            </Button><br />
+            <Button value="Cancel" onClick={this.handleLogin}>
+              Cancel
+            </Button>
+          </div>
         </div>
-        <div
-          style={{ display: "flex", flexDirection: "row", flexGrow: "1" }}
-        ><Label>abc</Label></div>
       </Modal>
     );
   }
