@@ -3,10 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-
     "@react95/core": "^2.10.3",
     "@react95/icons": "^0.3.0",
-    "@testing-library/jest-dom": "^5.10.0",
+    "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^11.4.2",
     "clippy": "^0.0.0",
