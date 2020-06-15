@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react95/core": "^2.10.2",
+    "@react95/core": "^2.10.3",
     "@react95/icons": "^0.2.0",
     "@testing-library/jest-dom": "^5.10.0",
     "@testing-library/react": "^9.3.2",
