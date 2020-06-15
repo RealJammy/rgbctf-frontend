@@ -1283,6 +1283,11 @@
   resolved "https://registry.yarnpkg.com/@react95/icons/-/icons-0.2.0.tgz#b7e8cbb60f9e16aabbb9bbe4a7571f489cd77f83"
   integrity sha512-6xwdIWf/aHEo9Yq60yuYXEiuphIF3dGTy1tTmRWASx0x6w+JL7yCegbdR7S/vEb7kFb7zmx7RlvSMo25swH5+Q==
 
+"@react95/icons@^0.3.0":
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/@react95/icons/-/icons-0.3.0.tgz#63ca845d47a043efb12c91c5df2b828a3bdc9035"
+  integrity sha512-e+yGpDo/O0xj2cf9iCl2E+tKrdNfcnmpheF90hwaSrPXMaG7BUHgJUZwWNYBkRyGc/nRRVRIR8vdg+j8KXSP3w==
+
 "@sheerun/mutationobserver-shim@^0.3.2":
   version "0.3.3"
   resolved "https://registry.yarnpkg.com/@sheerun/mutationobserver-shim/-/mutationobserver-shim-0.3.3.tgz#5405ee8e444ed212db44e79351f0c70a582aae25"
