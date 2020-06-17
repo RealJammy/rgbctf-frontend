@@ -3,7 +3,9 @@ import { Modal } from "./Modal";
 import styled from "styled-components";
 import { th } from "@xstyled/system";
 import Icon from "@react95/core/Icon/Icon";
-import Input from "@react95/core/Input/Input"
+import Input from "@react95/core/Input/Input";
+
+import auth from "../net/auth";
 
 const Button = styled.button`
   height: 25px;
@@ -35,55 +37,202 @@ const Button = styled.button`
 `;
 
 const Label = styled.p`
-font-size:12px;
-margin-top:10px;
-display: inline-block;
+  font-size: 12px;
+  margin-top: 10px;
+  display: inline-block;
 `;
 
 const DialogIcon = styled(Icon)`
-margin-left: 20px;
-margin-right: 20px;
-margin-top: 10px;
-display: inline-block;
-`
+  margin-left: 20px;
+  margin-right: 20px;
+  margin-top: 10px;
+  display: inline-block;
+`;
 
 const RightSideInput = styled(Input)`
-width: 70%;
-box-sizing: border-box;
-display: inline-block;
-`
+  width: 70%;
+  box-sizing: border-box;
+  display: inline-block;
+`;
 const InputLabel = styled(Label)`
-width: 30%;
-`
+  width: 30%;
+`;
+const StyledModal = styled(Modal)`
+  justify-content: center;
+`;
 
 class LoginPage extends React.Component {
-  handleLogin = () => {};
+  constructor() {
+    super();
+    this.state = {
+      user: "",
+      pass: "",
+      confirmPass: "",
+      email: "",
+      register: false,
+    };
+  }
+  updateUser = (e) => {
+    this.setState({ user: e.target.value });
+  };
+
+  updatePass = (e) => {
+    this.setState({ pass: e.target.value });
+  };
+
+  handleLogin = () => {
+    auth.login(this.state.user, this.state.pass);
+  };
+
+  handleRegister = () => {
+    if (this.state.pass === this.state.confirmPass)
+      auth.register(this.state.user, this.state.pass, this.state.email);
+  };
+  handleRegisterSwitch = () => {
+    this.setState({
+      register: true,
+    });
+  };
+  handleLoginSwitch = () => {
+    this.setState({
+      register: false,
+    });
+  };
+
+  handleInputChange = (event) => {
+    const target = event.target;
+    this.setState({
+      [target.name]: target.value,
+    });
+  }
+
   render() {
-    return (
-      <Modal
-        width={450}
-        height={200}
-        title="Enter rgbCTF Password"
-        icon="computer"
-      >
-        <div style={{ 'display': 'flex', 'flex-direction': 'row' }} >
-          <DialogIcon name="mprserv_120" size="60"/>
-          <div style={{ 'flex-grow': '1', 'display': 'flex', 'flex-direction': 'column' }} >
-            <Label>Type a username and password to log on to rgbCTF</Label>
-            <div><InputLabel>Username</InputLabel><RightSideInput style={{  }}></RightSideInput></div>
-            <div><InputLabel>Password</InputLabel><RightSideInput style={{  }}></RightSideInput></div>
+    if (!this.state.register) {
+      return (
+        <StyledModal
+          width={450}
+          height={200}
+          title="Enter rgbCTF Password"
+          icon="computer"
+          defaultPosition={{
+            x: window.outerWidth / 2 - 225,
+            y: window.outerHeight / 2 - 200,
+          }}
+        >
+          <div style={{ display: "flex", "flex-direction": "row" }}>
+            <DialogIcon name="mprserv_120" size="60" />
+            <div
+              style={{
+                "flex-grow": "1",
+                display: "flex",
+                "flex-direction": "column",
+              }}
+            >
+              <Label>Type a username and password to log on to rgbCTF</Label>
+              <div>
+                <InputLabel>Username</InputLabel>
+                <RightSideInput
+                  style={{}}
+                  name="user"
+                  onChange={this.handleInputChange}
+                  value={this.state.user}
+                ></RightSideInput>
+              </div>
+              <div>
+                <InputLabel>Password</InputLabel>
+                <RightSideInput
+                  style={{}}
+                  name="pass"
+                  onChange={this.handleInputChange}
+                  value={this.state.pass}
+                ></RightSideInput>
+              </div>
+            </div>
+            <div style={{ display: "inline-block", "margin-left": "12px" }}>
+              <Button value="Login" onClick={this.handleLogin}>
+                Login
+              </Button>
+              <br />
+              <Button value="Register" onClick={this.handleRegisterSwitch}>
+                Register
+              </Button>
+            </div>
           </div>
-          <div style={{ 'display': 'inline-block', 'margin-left': '12px' }}>
-            <Button value="OK" onClick={this.handleLogin}>
-              OK
-            </Button><br />
-            <Button value="Cancel" onClick={this.handleLogin}>
-              Cancel
-            </Button>
+        </StyledModal>
+      );
+    } else {
+      return (
+        <StyledModal
+          width={450}
+          height={300}
+          title="Register for rgbCTF"
+          icon="computer"
+          defaultPosition={{
+            x: window.outerWidth / 2 - 225,
+            y: window.outerHeight / 2 - 200,
+          }}
+        >
+          <div style={{ display: "flex", "flex-direction": "row" }}>
+            <DialogIcon name="mprserv_120" size="60" />
+            <div
+              style={{
+                "flex-grow": "1",
+                display: "flex",
+                "flex-direction": "column",
+              }}
+            >
+              <Label>Sign up for rgbCTF</Label>
+              <div>
+                <InputLabel>Username</InputLabel>
+                <RightSideInput
+                  style={{}}
+                  name="user"
+                  onChange={this.handleInputChange}
+                  value={this.state.user}
+                ></RightSideInput>
+              </div>
+              <div>
+                <InputLabel>Password</InputLabel>
+                <RightSideInput
+                  style={{}}
+                  name="pass"
+                  onChange={this.handleInputChange}
+                  value={this.state.pass}
+                ></RightSideInput>
+              </div>
+              <div>
+                <InputLabel>Confirm Password</InputLabel>
+                <RightSideInput
+                  style={{}}
+                  name="confirmPass"
+                  onChange={this.handleInputChange}
+                  value={this.state.confirmPass}
+                ></RightSideInput>
+              </div>
+              <div>
+                <InputLabel>Email</InputLabel>
+                <RightSideInput
+                  style={{}}
+                  name="email"
+                  onChange={this.handleInputChange}
+                  value={this.state.email}
+                ></RightSideInput>
+              </div>
+            </div>
+
+            <div style={{ display: "inline-block", "margin-left": "12px" }}>
+              <Button value="Register" onClick={this.handleRegister}>
+                OK
+              </Button>
+              <br />
+              <Button value="Login" onClick={this.handleLoginSwitch}>
+                Login
+              </Button>
+            </div>
           </div>
-        </div>
-      </Modal>
-    );
+        </StyledModal>
+      );
+    }
   }
 }
 

@@ -6,7 +6,9 @@ import { ThemeProvider } from "@react95/core";
 import ChallengeModal from "./components/ChallengeModal";
 import LoginPage from "./components/LoginPage";
 
-import GlobalStyles from '@react95/core/GlobalStyle'
+import { cookie } from "react-cookie";
+
+import GlobalStyles from "@react95/core/GlobalStyle";
 
 class App extends React.Component {
   constructor(props) {
@@ -24,11 +26,10 @@ class App extends React.Component {
           description: "def",
         },
       ],
-      challengeModals: []
+      challengeModals: [],
+      loggedIn: false,
     };
-    this.handleOpen = this.handleOpen.bind(this)
-    
-    
+    this.handleOpen = this.handleOpen.bind(this);
   }
 
   componentDidMount() {
@@ -44,23 +45,37 @@ class App extends React.Component {
   handleOpen(challenge) {
     this.setState({
       challenges: this.state.challenges,
-      challengeModals: this.state.challengeModals.concat(<ChallengeModal description={challenge.description} name={challenge.name} category={challenge.category}></ChallengeModal>)
-    })
+      challengeModals: this.state.challengeModals.concat(
+        <ChallengeModal
+          description={challenge.description}
+          name={challenge.name}
+          category={challenge.category}
+        ></ChallengeModal>
+      ),
+      loggedIn: this.state.loggedIn,
+    });
   }
 
   render() {
-
-
     return (
       <ThemeProvider>
         <GlobalStyles></GlobalStyles>
-        <LoginPage></LoginPage>
-        {this.state.challengeModals.map((chall) => {
-          console.log(chall);
-          return chall;
-        })}
+        {!this.state.loggedIn && <LoginPage></LoginPage>}
 
-        <Navbar challenges={this.state.challenges} handleOpen={this.handleOpen}/>
+        {this.state.loggedIn &&
+          this.state.challengeModals.map((chall) => {
+            console.log(chall);
+            return chall;
+          })
+          (
+            <Navbar
+          challenges={this.state.challenges}
+          handleOpen={this.handleOpen}
+        />
+          )
+          }
+
+        
       </ThemeProvider>
     );
   }

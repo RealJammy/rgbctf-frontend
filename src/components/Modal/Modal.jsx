@@ -21,7 +21,6 @@ const ModalWrapper = styled.div`
   flex-direction: column;
   position: fixed;
   padding: 2 2 8;
-  top: 50px;
   background-color: bg;
   box-shadow: inset 1px 1px 0px 1px ${th("colors.white")},
     inset 0 0 0 1px ${th("colors.grays.3")}, 1px 1px 0 1px ${th("colors.black")};
@@ -131,6 +130,7 @@ const MenuItem = styled.li`
       color: ${th("colors.white")};
     `};
 `;
+
 
 MenuItem.displayName = "MenuItem";
 
