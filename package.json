@@ -7,7 +7,7 @@
     "@react95/icons": "^0.3.0",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.3.0",
-    "@testing-library/user-event": "^12.0.1",
+    "@testing-library/user-event": "^12.0.2",
     "clippy": "^0.0.0",
     "jquery": "^3.5.1",
     "react": "^16.13.1",
