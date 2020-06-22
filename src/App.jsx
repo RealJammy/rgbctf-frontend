@@ -54,12 +54,12 @@ class App extends React.Component {
         <GlobalStyles></GlobalStyles>
         {!this.state.loggedIn && <LoginPage loginHandler={() => {this.setState({loggedIn: true})}}></LoginPage>}
 
-        {this.state.loggedIn && this.state.challengeModals.map &&
+        {this.state.loggedIn  &&
           this.state.challengeModals.map((chall) => {
             console.log(chall);
             return chall;
           })}
-          {this.state.loggedIn && this.state.challengeModals.map &&
+          {this.state.loggedIn  &&
           (
             <Navbar
           challenges={this.state.challenges}
