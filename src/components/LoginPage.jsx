@@ -156,6 +156,7 @@ class LoginPage extends React.Component {
                 <RightSideInput
                   style={{}}
                   name="pass"
+                  type="password"
                   onChange={this.handleInputChange}
                   value={this.state.pass}
                 ></RightSideInput>
@@ -255,6 +256,7 @@ class LoginPage extends React.Component {
                     <RightSideInput
                       style={{}}
                       name="inviteCode"
+                      type="password"
                       onChange={this.handleInputChange}
                       value={this.state.inviteCode}
                     ></RightSideInput>
@@ -277,6 +279,7 @@ class LoginPage extends React.Component {
                     <RightSideInput
                       style={{}}
                       name="inviteCode"
+                      type="password"
                       onChange={this.handleInputChange}
                       value={this.state.inviteCode}
                     ></RightSideInput>
