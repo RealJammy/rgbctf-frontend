@@ -55,7 +55,7 @@ class App extends React.Component {
         {!this.state.loggedIn && <LoginPage loginHandler={() => {this.setState({loggedIn: true})}}></LoginPage>}
 
         {this.state.loggedIn && this.state.challengeModals.map &&
-          this.state.challengeModals.map((chall) => {
+          this.state.challengeModals.map(chall => {
             console.log(chall);
             return chall;
           })
