@@ -9,12 +9,11 @@ import PropTypes from "prop-types";
 import styled, { css } from "@xstyled/styled-components";
 import { th, backgroundColor } from "@xstyled/system";
 import Draggable from "react-draggable";
-
-import Btn from "@react95/core/shared-style/Btn";
-import Button from "@react95/core/Button";
-import Icon from "@react95/core/Icon";
+import Btn from "react95/core/shared-style/Btn";
+import Button from "react95/core/Button";
+import Icon from "react95/core/Icon";
 import ModalContext from "./ModalContext";
-import Input from "@react95/core/Input/Input";
+import Input from "react95/core/Input/Input";
 
 const ModalWrapper = styled.div`
   display: flex;

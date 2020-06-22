@@ -3,17 +3,22 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@react95/core": "^2.10.3",
     "@react95/icons": "^0.3.0",
+    "@styled-system/prop-types": "^5.1.5",
     "@testing-library/jest-dom": "^5.10.1",
     "@testing-library/react": "^10.3.0",
     "@testing-library/user-event": "^12.0.1",
+    "@xstyled/styled-components": "^1.17.1",
     "clippy": "^0.0.0",
+    "icojs": "^0.14.0",
     "jquery": "^3.5.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-draggable": "^4.4.3",
     "react-scripts": "3.4.1",
-    "styled-components": "^5.1.1"
+    "react95": "https://github.com/RGBsec/react95",
+    "styled-components": "^5.1.1",
+    "styled-system": "^5.1.5"
   },
   "scripts": {
     "start": "react-scripts start",

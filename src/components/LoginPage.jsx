@@ -2,8 +2,8 @@ import React from "react";
 import { Modal } from "./Modal";
 import styled from "styled-components";
 import { th } from "@xstyled/system";
-import Icon from "@react95/core/Icon/Icon";
-import Input from "@react95/core/Input/Input";
+import Icon from "react95/core/Icon/Icon";
+import Input from "react95/core/Input/Input";
 
 import auth from "../net/auth";
 
@@ -81,7 +81,7 @@ class LoginPage extends React.Component {
   };
 
   handleLogin = () => {
-    auth.login(this.state.user, this.state.pass);
+    auth.login(this.state.user, this.state.pass).then(() => this.props.loginHandler());
   };
 
   handleRegister = () => {

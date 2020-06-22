@@ -1,0 +1,6 @@
+[submodule "react95"]
+	path = react95
+	url = https://github.com/RGBsec/react95
+[submodule "src/react95"]
+	path = src/react95
+	url = https://github.com/RGBsec/react95

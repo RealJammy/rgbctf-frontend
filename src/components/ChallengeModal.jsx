@@ -1,5 +1,5 @@
-import Input from "@react95/core/Input";
-import List from "@react95/core/List";
+import Input from "react95/core/Input";
+import List from "react95/core/List";
 import { Modal } from "./Modal";
 import React from "react";
 import styled from "styled-components";

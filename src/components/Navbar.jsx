@@ -1,5 +1,5 @@
-import List from "@react95/core/List";
-import TaskBar from "@react95/core/TaskBar";
+import List from "react95/core/List";
+import TaskBar from "react95/core/TaskBar";
 import React, { useContext } from "react";
 
 
