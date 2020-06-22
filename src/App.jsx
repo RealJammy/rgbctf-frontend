@@ -58,7 +58,8 @@ class App extends React.Component {
           this.state.challengeModals.map((chall) => {
             console.log(chall);
             return chall;
-          })
+          })}
+          {this.state.loggedIn && this.state.challengeModals.map &&
           (
             <Navbar
           challenges={this.state.challenges}
