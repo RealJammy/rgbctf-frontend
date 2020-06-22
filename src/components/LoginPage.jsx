@@ -6,6 +6,7 @@ import Icon from "react95/core/Icon/Icon";
 import Input from "react95/core/Input/Input";
 
 import auth from "../net/auth";
+import { Checkbox } from "react95/core";
 
 const Button = styled.button`
   height: 25px;
@@ -70,6 +71,9 @@ class LoginPage extends React.Component {
       confirmPass: "",
       email: "",
       register: false,
+      createTeam: true,
+      teamName: "",
+      inviteCode: "",
     };
   }
   updateUser = (e) => {
@@ -81,12 +85,14 @@ class LoginPage extends React.Component {
   };
 
   handleLogin = () => {
-    auth.login(this.state.user, this.state.pass).then(() => this.props.loginHandler());
+    auth
+      .login(this.state.user, this.state.pass)
+      .then(() => this.props.loginHandler());
   };
 
   handleRegister = () => {
     if (this.state.pass === this.state.confirmPass)
-      auth.register(this.state.user, this.state.pass, this.state.email);
+      auth.register(this.state.teamName, this.state.inviteCode, this.state.createTeam, this.state.user, this.state.pass, this.state.email);
   };
   handleRegisterSwitch = () => {
     this.setState({
@@ -99,12 +105,19 @@ class LoginPage extends React.Component {
     });
   };
 
+  handleCheckInputChange = (event) => {
+    const target = event.target;
+    this.setState({
+      [target.name]: !target.checked,
+    });
+  };
+
   handleInputChange = (event) => {
     const target = event.target;
     this.setState({
       [target.name]: target.value,
     });
-  }
+  };
 
   render() {
     if (!this.state.register) {
@@ -164,7 +177,7 @@ class LoginPage extends React.Component {
       return (
         <StyledModal
           width={450}
-          height={300}
+          height={350}
           title="Register for rgbCTF"
           icon="computer"
           defaultPosition={{
@@ -218,6 +231,58 @@ class LoginPage extends React.Component {
                   value={this.state.email}
                 ></RightSideInput>
               </div>
+              <Checkbox
+                name="createTeam"
+                onClick={this.handleCheckInputChange}
+                checked={!this.state.createTeam}
+              >
+                I want to join an existing team
+              </Checkbox>
+
+              {this.state.createTeam && (
+                <>
+                  <div>
+                    <InputLabel>New Team Name</InputLabel>
+                    <RightSideInput
+                      style={{}}
+                      name="teamName"
+                      onChange={this.handleInputChange}
+                      value={this.state.teamName}
+                    ></RightSideInput>
+                  </div>
+                  <div>
+                    <InputLabel>New Team Invite Code</InputLabel>
+                    <RightSideInput
+                      style={{}}
+                      name="inviteCode"
+                      onChange={this.handleInputChange}
+                      value={this.state.inviteCode}
+                    ></RightSideInput>
+                  </div>
+                </>
+              )}
+              {!this.state.createTeam && (
+                <>
+                  <div>
+                    <InputLabel>Team Name</InputLabel>
+                    <RightSideInput
+                      style={{}}
+                      name="teamName"
+                      onChange={this.handleInputChange}
+                      value={this.state.teamName}
+                    ></RightSideInput>
+                  </div>
+                  <div>
+                    <InputLabel>Team Invite Code</InputLabel>
+                    <RightSideInput
+                      style={{}}
+                      name="inviteCode"
+                      onChange={this.handleInputChange}
+                      value={this.state.inviteCode}
+                    ></RightSideInput>
+                  </div>
+                </>
+              )}
             </div>
 
             <div style={{ display: "inline-block", "margin-left": "12px" }}>

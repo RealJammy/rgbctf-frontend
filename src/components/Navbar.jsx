@@ -63,7 +63,7 @@ class NavBar extends React.Component {
                 </List.Item>
                 <List.Divider />
 
-                <List.Item icon="folder_file">Documents</List.Item>
+                <List.Item icon="folder_file" onClick = {this.props.handleScoreboard}>Scoreboard</List.Item>
                 <List.Item icon="settings">
                   <List>
                     <List.Item icon="folder_settings">

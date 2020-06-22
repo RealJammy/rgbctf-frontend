@@ -12,6 +12,18 @@ const handleResponse = (response) => {
   });
 };
 
+export const getScoreboard = (index) => {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      "index": index,
+    },
+    credentials: "include",
+  };
+  return fetch(`${apiUrl}/scoreboard/${index}`, requestOptions).then(handleResponse);
+}
+
 export const logout = () => {
   const requestOptions = {
     method: "POST",
@@ -20,7 +32,7 @@ export const logout = () => {
     },
     credentials: "include",
   };
-  fetch(`${apiUrl}/user/logout`, requestOptions);
+  return fetch(`${apiUrl}/user/logout`, requestOptions).then(handleResponse);
 };
 
 export const login = (username, password) => {
@@ -41,7 +53,7 @@ export const login = (username, password) => {
   );
 };
 
-export const register = (username, password, email) => {
+export const register = (teamName, inviteCode, createTeam, name, password, email) => {
   const requestOptions = {
     method: "POST",
     credentials: "include",
@@ -49,7 +61,10 @@ export const register = (username, password, email) => {
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      name: username,
+      teamName: teamName,
+      inviteCode: inviteCode,
+      createTeam: createTeam,
+      name: name,
       password: password,
       email: email,
     }),
