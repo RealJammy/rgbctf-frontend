@@ -132,13 +132,13 @@ class LoginPage extends React.Component {
             y: window.outerHeight / 2 - 200,
           }}
         >
-          <div style={{ display: "flex", "flex-direction": "row" }}>
-            <DialogIcon name="mprserv_120" size="60" />
+          <div style={{ display: "flex", "flexDirection": "row" }}>
+            <DialogIcon name="mprserv_120" size={60} />
             <div
               style={{
-                "flex-grow": "1",
+                "flexGrow": "1",
                 display: "flex",
-                "flex-direction": "column",
+                "flexDirection": "column",
               }}
             >
               <Label>Type a username and password to log on to rgbCTF</Label>
@@ -162,7 +162,7 @@ class LoginPage extends React.Component {
                 ></RightSideInput>
               </div>
             </div>
-            <div style={{ display: "inline-block", "margin-left": "12px" }}>
+            <div style={{ display: "inline-block", "marginLeft": "12px" }}>
               <Button value="Login" onClick={this.handleLogin}>
                 Login
               </Button>

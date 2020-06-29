@@ -3,8 +3,7 @@ import List from "react95/core/List";
 import { Modal } from "./Modal";
 import React from "react";
 import styled from "styled-components";
-
-
+import { submitChall } from "../net/chall";
 
 class ChallengeModal extends React.Component {
   constructor(props) {
@@ -12,10 +11,10 @@ class ChallengeModal extends React.Component {
 
     this.state = {
       showModal: true,
+      flag: "",
+      solved: false,
     };
   }
-
-
 
   handleOpenModal = () => this.setState({ showModal: true });
 
@@ -23,8 +22,22 @@ class ChallengeModal extends React.Component {
     this.setState({ showModal: false });
   };
 
-  componentDidMount() {}
+  handleSubmit = () => {
+    submitChall(this.props.name, this.state.flag).then(() => {
+      this.setState({solved: true});
+    });
+    this.props.handleSubmit();
+  };
 
+  componentDidMount() {
+    this.setState({ solved: this.props.solved });
+  }
+  handleInputChange = (event) => {
+    const target = event.target;
+    this.setState({
+      [target.name]: target.value,
+    });
+  };
   render() {
     const { children } = this.props;
     const { showModal } = this.state;
@@ -37,7 +50,13 @@ class ChallengeModal extends React.Component {
             icon="computer"
             title={this.props.name}
             closeModal={this.handleCloseModal}
-            buttons={[{ value: "Submit", onClick: this.handleCloseModal }]}
+            buttons={[
+              {
+                value: "Submit",
+                onClick: this.handleSubmit,
+                disabled: this.state.solved,
+              },
+            ]}
             menu={[
               {
                 name: "File",
@@ -48,7 +67,16 @@ class ChallengeModal extends React.Component {
                 ),
               },
             ]}
-            leftOfButton={<Input placeholder="rgbCTF{...}"></Input>}
+            leftOfButton={
+              <>
+              {this.props.value} points
+              <Input
+                placeholder={!this.state.solved && "rgbCTF{...}"}
+                name="flag"
+                value={this.state.flag}
+                onChange={this.handleInputChange}
+              ></Input></>
+            }
           >
             {this.props.description}
             {children}

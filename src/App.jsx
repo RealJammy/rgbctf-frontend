@@ -4,37 +4,25 @@ import Navbar from "./components/Navbar";
 import { ThemeProvider } from "react95/core";
 import ChallengeModal from "./components/ChallengeModal";
 import LoginPage from "./components/LoginPage";
-import Scoreboard from './components/Scoreboard'
+import Scoreboard from "./components/Scoreboard";
 import GlobalStyles from "react95/core/GlobalStyle";
-
-import Cookies from 'js-cookie';
+import { getChallenges } from "./net/chall";
+import Cookies from "js-cookie";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
     this.state = {
-      challenges: [
-        {
-          name: "abc",
-          category: "OSINT",
-          description: "abc",
-        },
-        {
-          name: "def",
-          category: "Crypto",
-          description: "def",
-        },
-      ],
+      challenges: [],
       challengeModals: [],
       loggedIn: false,
       showScoreboard: false,
+      challUpdated: false,
     };
     this.handleOpen = this.handleOpen.bind(this);
   }
 
-  componentDidMount() {
-  //  if(Cookies.get(username))
-  }
   handleOpen(challenge) {
     this.setState({
       challenges: this.state.challenges,
@@ -43,15 +31,23 @@ class App extends React.Component {
           description={challenge.description}
           name={challenge.name}
           category={challenge.category}
+          solved={challenge.solved}
+          handleSubmit={() => this.setState({challUpdated: false})}
+          value={challenge.points}
         ></ChallengeModal>
       ),
       loggedIn: this.state.loggedIn,
     });
   }
 
-  render() {
-    console.log(this.state.challengeModals);
 
+  render() {
+    if (this.state.loggedIn && !this.state.challUpdated) {
+      console.log(getChallenges());
+      getChallenges().then((data) => {
+        this.setState({ challenges: data, challUpdated: true });
+      });
+    }
     return (
       <ThemeProvider>
         <GlobalStyles></GlobalStyles>
@@ -65,19 +61,16 @@ class App extends React.Component {
 
         {this.state.loggedIn &&
           this.state.challengeModals.map((chall) => {
-            console.log(chall);
             return chall;
           })}
         {this.state.loggedIn && (
           <Navbar
             challenges={this.state.challenges}
             handleOpen={this.handleOpen}
-            handleScoreboard={(show) => this.setState({showScoreboard: true})}
+            handleScoreboard={(show) => this.setState({ showScoreboard: true })}
           />
         )}
-        {this.state.showScoreboard && (
-          <Scoreboard></Scoreboard>
-        )}
+        {this.state.showScoreboard && <Scoreboard></Scoreboard>}
       </ThemeProvider>
     );
   }

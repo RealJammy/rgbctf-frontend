@@ -229,6 +229,7 @@ const Modal = forwardRef(
                     key={button.value}
                     onClick={button.onClick}
                     value={button.value}
+                    disabled={button.disabled}
                   />
                 ))}
               </ButtonWrapper>
