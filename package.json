@@ -10,7 +10,7 @@
     "@testing-library/user-event": "^12.0.11",
     "@xstyled/styled-components": "^1.17.1",
     "clippy": "^0.0.0",
-    "icojs": "^0.14.0",
+    "icojs": "^0.15.0",
     "jquery": "^3.5.1",
     "js-cookie": "^2.2.1",
     "react": "^16.13.1",
